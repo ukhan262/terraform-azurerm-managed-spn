@@ -12,3 +12,7 @@ output "sp-name" {
   description = "Display name of the spn"
   value       = azuread_application.app.display_name
 }
+
+output "time" {
+  value = time_rotating.time.rfc3339
+}

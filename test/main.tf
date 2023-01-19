@@ -1,25 +1,29 @@
 module "app-registration" {
 
-  providers = {
-    azurerm.additional_kv = azurerm.dev
-  }
+  # providers = {
+  #   azurerm.additional_kv = azurerm.dev
+  # }
 
-  source      = "../"
-  name        = "sbs-azure-poc-test"
-  description = "app registration poc"
+  source        = "../"
+  override_name = "sbs-azure-poc-test"
+  description   = "app registration poc"
 
 }
 
-provider "azuread" {
-  tenant_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+output "time" {
+  value = module.app-registration.time
 }
 
-provider "azurerm" {
-  features {}
-}
+# provider "azuread" {
+#   tenant_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# }
 
-provider "azurerm" {
-  alias           = "additional_kv"
-  subscription_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  features {}
-}
+# provider "azurerm" {
+#   features {}
+# }
+
+# provider "azurerm" {
+#   alias           = "additional_kv"
+#   subscription_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#   features {}
+# }
