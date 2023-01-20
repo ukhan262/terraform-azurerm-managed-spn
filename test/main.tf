@@ -1,8 +1,8 @@
 module "app-registration" {
 
-  # providers = {
-  #   azurerm.additional_kv = azurerm.dev
-  # }
+  providers = {
+    azurerm.additional_kv = azurerm.dev
+  }
 
   source        = "../"
   override_name = "sbs-azure-poc-test"
@@ -10,10 +10,10 @@ module "app-registration" {
 
 }
 
-output "time" {
-  value = module.app-registration.time
+output "module" {
+  value     = module.app-registration
+  sensitive = true
 }
-
 # provider "azuread" {
 #   tenant_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 # }

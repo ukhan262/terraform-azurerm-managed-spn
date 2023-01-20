@@ -13,6 +13,22 @@ output "sp-name" {
   value       = azuread_application.app.display_name
 }
 
-output "time" {
-  value = time_rotating.time.rfc3339
+
+output "is_greater_than_jan" {
+  value = local.is_greater_than_jan
+}
+output "is_less_than_july" {
+  value = local.is_less_than_july
+}
+
+output "is_greater_than_apr" {
+  value = local.is_greater_than_apr
+}
+output "is_less_than_oct" {
+  value = local.is_less_than_oct
+}
+
+output "most_recent_password" {
+  value     = local.secret_to_pass
+  sensitive = true
 }
