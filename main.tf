@@ -134,7 +134,7 @@ locals {
     first  = formatdate("YYYYMMDDhhmmss", azuread_application_password.first_password.end_date)
     second = formatdate("YYYYMMDDhhmmss", azuread_application_password.second_password.end_date)
   }
-
+  expiration_date_to_pass = local.secret.first > local.secret.second ? azuread_application_password.first_password.end_date : azuread_application_password.second_password.end_date
   secret_to_pass = local.secret.first > local.secret.second ? azuread_application_password.first_password.value : azuread_application_password.second_password.value
 }
 
@@ -161,7 +161,7 @@ resource "azurerm_key_vault_secret" "sp-secret" {
   name            = "${local.name}-secret"
   value           = local.secret_to_pass
   key_vault_id    = var.key_vault_id[count.index]
-  expiration_date = azuread_application_password.sp-password.end_date
+  expiration_date = local.expiration_date_to_pass
 
   lifecycle {
     ignore_changes = [tags]
@@ -184,9 +184,9 @@ resource "azurerm_key_vault_secret" "additional-sp-secret" {
   provider        = azurerm.additional_kv
   count           = length(var.additional_key_vault_ids)
   name            = "${local.name}-secret"
-  value           = azuread_application_password.sp-password.value
+  value           = local.secret_to_pass
   key_vault_id    = var.additional_key_vault_ids[count.index]
-  expiration_date = azuread_application_password.sp-password.end_date
+  expiration_date = local.expiration_date_to_pass
 
   lifecycle {
     ignore_changes = [tags]
