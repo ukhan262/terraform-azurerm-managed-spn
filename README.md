@@ -1,15 +1,18 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | ~> 2.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azuread"></a> [azuread](#provider\_azuread) | 2.33.0 |
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
-| <a name="provider_azurerm.additional_kv"></a> [azurerm.additional\_kv](#provider\_azurerm.additional\_kv) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.0 |
+| <a name="provider_azurerm.additional_kv"></a> [azurerm.additional\_kv](#provider\_azurerm.additional\_kv) | ~> 3.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | 0.9.1 |
 
 ## Modules
